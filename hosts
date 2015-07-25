@@ -1,0 +1,2 @@
+[development]
+ec2-XXX-XXX-XXX-XXX.ap-northeast-1.compute.amazonaws.com ansible_connection=ssh ansible_ssh_user=ubuntu ansible_ssh_private_key_file=~/.ssh/hoge.pem

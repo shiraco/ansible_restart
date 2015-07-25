@@ -1,0 +1,17 @@
+---
+- name: touch file
+  file: dest={{ home }}/initial state=touch
+
+- name: reboot!
+  command: shutdown -r now
+  sudo: yes
+  ignore_errors: true
+
+- name: wait for SSH port down
+  local_action: wait_for host={{ inventory_hostname }} port=22 state=stopped
+
+- name: wait for SSH port up
+  local_action: wait_for host={{ inventory_hostname }} port=22 state=started delay=10 timeout=300
+
+- name: touch file
+  file: dest={{ home }}/restartd state=touch
